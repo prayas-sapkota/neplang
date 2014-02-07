@@ -47,7 +47,30 @@ class NepLang
 
     public static function nepaliToEnglish($number)
     {
-        //TODO
+        $english = '';
+        for($i=0;$i < strlen($number); $i++)
+        {
+            if(strpos($number,'.',$i) !== FALSE && strpos($number,'.',$i) == $i)
+            {
+                $english.='.';
+                $i+=strlen('.')-1;
+            }
+            else
+            {
+                $found = false;
+                for($j=0; $j<count(self::$nepalidigits);$j++)
+                {
+                    $position = -1;
+                    if(($position = strpos($number, self::$nepalidigits[$j],$i)) !== FALSE && $position == $i)
+                    {
+                        $english.=strval($j);
+                        $i+=strlen(self::$nepalidigits[$j])-1;
+                        break;
+                    }
+                }
+            }
+        }
+        return $english;
     }
 
     public static function numberToWord($number, $isnepali = false)

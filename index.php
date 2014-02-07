@@ -8,7 +8,13 @@
 //by virtualanup (virtualanup.com)
 include("neplang.php");
 
-echo NepLang::numberToWord(4384343734837.043344000);
+echo "The value of pi in nepali is ".NepLang::englishToNepali(M_PI).
+    " and in english is ".NepLang::nepaliToEnglish(NepLang::englishToNepali(M_PI))."<br/>";
+
+echo NepLang::numberToWord(434373487.043344000)."<br/>";
+
+echo NepLang::numberToWord(NepLang::englishToNepali(434373487.043344000),true)."<br/>";
+
 for($i = 0;$i <= 1000; $i++)
 {
     echo $i." - ".NepLang::englishToNepali($i)." - ".NepLang::numberToWord($i)."<br/>";
